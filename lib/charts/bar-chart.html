@@ -11,6 +11,8 @@
       $schema: "https://vega.github.io/schema/vega-lite/v4.json",
       description: "A simple bar chart with embedded data.",
       background: "#fefefa",
+      height: 300,
+      width: 300,
       config: {
         font: "Roboto",
         style: {
@@ -20,23 +22,35 @@
         axis: { domainColor: "#44475a", tickColor: "#44475a" },
       },
       data: {
-        values: [
-          { a: "A", b: 28 },
-          { a: "B", b: 55 },
-          { a: "C", b: 43 },
-          { a: "D", b: 91 },
-          { a: "E", b: 81 },
-          { a: "F", b: 53 },
-          { a: "G", b: 19 },
-          { a: "H", b: 87 },
-          { a: "I", b: 52 },
-        ],
+        url:
+          "https://raw.githubusercontent.com/joaopalmeiro/data-preparation/master/vega-presentation-require-lx/data/operations.csv",
+        name: "operations",
       },
-      mark: "bar",
+      mark: { type: "bar", color: "#f2af29" },
       encoding: {
-        x: { field: "a", type: "ordinal" },
-        y: { field: "b", type: "quantitative" },
-        tooltip: { field: "b", type: "quantitative" },
+        x: {
+          field: "emoji",
+          type: "ordinal",
+          axis: {
+            title: "Sector",
+            labelAngle: 0,
+          },
+          sort: { op: "count", field: "amount", order: "ascending" },
+        },
+        y: {
+          field: "amount",
+          type: "quantitative",
+          axis: { title: "Amount (EUR)", format: ".2s" },
+        },
+        tooltip: [
+          { field: "sector", type: "ordinal", title: "Sector" },
+          {
+            field: "amount",
+            type: "quantitative",
+            title: "Amount (EUR)",
+            format: ".2s",
+          },
+        ],
       },
     };
     vegaEmbed("#vis", yourVlSpec, (opt = { renderer: "svg" }));

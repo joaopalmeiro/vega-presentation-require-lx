@@ -1,0 +1,37 @@
+/**
+ * Based on the `White` theme (for reveal.js) 
+ * by Hakim El Hattab (http://hakim.se).
+ *
+ */
+
+@import "../template/mixins";
+@import "../template/settings";
+// ---------------------------------------------
+
+// Include theme-specific fonts
+@import url(../../lib/font/source-sans-pro/source-sans-pro.css);
+
+// Source: https://en.wikipedia.org/wiki/Shades_of_white
+$backgroundColor: #fefefa;
+
+// Source: https://liminoid.io/
+$mainColor: #44475a;
+$headingColor: #44475a;
+
+$mainFontSize: 42px;
+$mainFont: "Source Sans Pro", Helvetica, sans-serif;
+$headingFont: "Source Sans Pro", Helvetica, sans-serif;
+$headingTextShadow: none;
+$headingLetterSpacing: normal;
+$headingTextTransform: uppercase;
+$headingFontWeight: 600;
+$linkColor: #44475a;
+$linkColorHover: lighten($linkColor, 15%);
+$selectionBackgroundColor: lighten($mainColor, 25%);
+
+$heading1Size: 2.5em;
+$heading2Size: 1.6em;
+$heading3Size: 1.3em;
+$heading4Size: 1em;
+
+@import "../template/theme";

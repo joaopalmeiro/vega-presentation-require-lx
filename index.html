@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+
+    <style>
+      .container {
+        display: flex;
+      }
+      .col {
+        flex: 1;
+      }
+    </style>
+
+    <title>reveal.js</title>
+
+    <link rel="stylesheet" href="css/reset.css" />
+    <link rel="stylesheet" href="css/reveal.css" />
+    <link rel="stylesheet" href="css/theme/custom.css" />
+
+    <!-- Theme used for syntax highlighting of code -->
+    <link rel="stylesheet" href="lib/css/monokai.css" />
+
+    <!-- Printing and PDF exports -->
+    <script>
+      var link = document.createElement("link");
+      link.rel = "stylesheet";
+      link.type = "text/css";
+      link.href = window.location.search.match(/print-pdf/gi)
+        ? "css/print/pdf.css"
+        : "css/print/paper.css";
+      document.getElementsByTagName("head")[0].appendChild(link);
+    </script>
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides">
+        <section data-background="#fefefa">
+          <h2>
+            Plotting the first point with the Vega ecosystem<span
+              style="color: #f2af29;"
+              >.</span
+            >
+          </h2>
+          <!--Source: https://github.com/gcalmettes/reveal.js-d3-->
+          <iframe
+            data-src="./lib/charts/vega-lite-demo.html"
+            style="
+              margin: 0px;
+              width: 100vw;
+              height: 100vh;
+              max-width: 100%;
+              max-height: 100%;
+              z-index: 1;
+              border: 0;
+            "
+            scrolling="no"
+          ></iframe>
+        </section>
+        <section>
+          <h2>Teste</h2>
+          <div class="container">
+            <div class="col">
+              Slide 1 teste grg
+            </div>
+
+            <div class="col">
+              <iframe
+                data-src="./lib/charts/vega-lite-demo.html"
+                style="
+                  margin: 0px;
+                  width: 100vw;
+                  height: 100vh;
+                  max-width: 100%;
+                  max-height: 100%;
+                  z-index: 1;
+                  border: 0;
+                "
+                scrolling="no"
+              ></iframe>
+            </div>
+          </div>
+        </section>
+        <section>
+          <div class="container">
+            <div class="col">
+              Column 1 Content
+            </div>
+
+            <div class="col">
+              Column 2 Content
+            </div>
+          </div>
+        </section>
+        <section>Slide 2</section>
+      </div>
+    </div>
+
+    <script src="js/reveal.js"></script>
+
+    <script>
+      // More info about config & dependencies:
+      // - https://github.com/hakimel/reveal.js#configuration
+      // - https://github.com/hakimel/reveal.js#dependencies
+      Reveal.initialize({
+        hash: true,
+        controls: false,
+        slideNumber: function (slide) {
+          return !Reveal.isFirstSlide() ? [Reveal.getIndices(slide).h] : [""];
+        },
+        dependencies: [
+          { src: "plugin/markdown/marked.js" },
+          { src: "plugin/markdown/markdown.js" },
+          { src: "plugin/highlight/highlight.js" },
+        ],
+      });
+    </script>
+  </body>
+</html>

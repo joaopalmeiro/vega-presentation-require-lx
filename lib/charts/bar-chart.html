@@ -9,12 +9,24 @@
   <script type="text/javascript">
     var yourVlSpec = {
       $schema: "https://vega.github.io/schema/vega-lite/v4.json",
+      title: {
+        text: "Top 10 sectors w/ payment operations in ATM and POS terminals",
+        anchor: "start",
+        subtitle: "Lisbon (Municipality) | April 2020 | Source: SIBS Analytics",
+        offset: 15,
+      },
       description: "A simple bar chart with embedded data.",
       background: "#fefefa",
       height: 300,
       width: 300,
       config: {
         font: "Roboto",
+        title: {
+          font: "Roboto",
+          color: "#44475a",
+          subtitleFont: "Roboto",
+          subtitleColor: "#44475a",
+        },
         style: {
           "guide-label": { fill: "#44475a" },
           "guide-title": { fill: "#44475a" },
@@ -53,6 +65,15 @@
         ],
       },
     };
-    vegaEmbed("#vis", yourVlSpec, (opt = { renderer: "svg" }));
+
+    var tooltipOptions = {
+      theme: "light",
+    };
+
+    vegaEmbed(
+      "#vis",
+      yourVlSpec,
+      (opt = { renderer: "svg", tooltip: tooltipOptions })
+    );
   </script>
 </body>

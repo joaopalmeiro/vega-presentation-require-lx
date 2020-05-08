@@ -1,0 +1,109 @@
+<head>
+  <script src="https://cdn.jsdelivr.net/npm/vega@5.11.1"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-lite@4.12.0"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.7.1"></script>
+</head>
+<body style="margin: 0px; text-align: center;">
+  <div id="vis"></div>
+
+  <script type="text/javascript">
+    var yourVlSpec = {
+      $schema: "https://vega.github.io/schema/vega-lite/v4.json",
+      background: "#fefefa",
+      config: {
+        font: "Roboto",
+        view: { stroke: "" },
+        title: {
+          font: "Roboto",
+          color: "#44475a",
+          subtitleFont: "Roboto",
+          subtitleColor: "#44475a",
+          anchor: "middle",
+        },
+        style: {
+          "guide-label": { fill: "#44475a" },
+          "guide-title": { fill: "#44475a" },
+        },
+        axis: { domainColor: "#44475a", tickColor: "#44475a" },
+        text: { font: "Roboto", fill: "#44475a" },
+      },
+      title: {
+        text: "DIAGRAM of the CAUSES of MORTALITY",
+        subtitle: ["in the ARMY in the EAST"],
+        offset: 42,
+        fontSize: 42,
+        subtitleFontSize: 21,
+      },
+      padding: 0,
+      data: {
+        url:
+          "https://raw.githubusercontent.com/joaopalmeiro/data-preparation/master/vega-presentation-require-lx/data/rose_data.json",
+      },
+      facet: {
+        column: {
+          field: "chart",
+          type: "ordinal",
+          sort: "descending",
+          header: { title: null, labels: true, labelFontSize: 21 },
+        },
+      },
+      spec: {
+        encoding: { theta: { field: "order", type: "ordinal" } },
+        layer: [
+          {
+            encoding: {
+              radius: {
+                field: "n_deaths",
+                type: "quantitative",
+                scale: { type: "sqrt", zero: false, range: [0, 300] },
+                stack: null,
+              },
+              order: {
+                field: "n_deaths",
+                type: "ordinal",
+                sort: "descending",
+              },
+              color: {
+                field: "cause",
+                type: "nominal",
+                scale: {
+                  domain: ["disease", "wounds", "other"],
+                  range: ["#78a0b4", "#E9C2C3", "#44475a"],
+                },
+                legend: null,
+              },
+            },
+            mark: {
+              type: "arc",
+              stroke: "black",
+              strokeWidth: 0.1,
+              opacity: 1,
+            },
+          },
+          {
+            transform: [
+              { filter: "datum.cause == 'disease'" },
+              { calculate: "max(datum.max,100)", as: "label_radius" },
+            ],
+            encoding: {
+              angle: { field: "order", type: "ordinal" },
+              radius: { field: "label_radius", type: "quantitative" },
+              text: { field: "month", type: "nominal" },
+            },
+            mark: { type: "text", dy: -10 },
+          },
+        ],
+      },
+    };
+
+    var tooltipOptions = {
+      theme: "dark",
+    };
+
+    vegaEmbed(
+      "#vis",
+      yourVlSpec,
+      (opt = { renderer: "svg", tooltip: tooltipOptions })
+    );
+  </script>
+</body>

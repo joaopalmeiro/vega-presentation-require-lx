@@ -60,7 +60,7 @@
         <section data-background="#fefefa">
           <p><small>require('lx')</small></p>
           <h2>
-            Plotting the first point with the Vega ecosystem<span
+            Plotting the first point w/ the Vega ecosystem<span
               style="color: #f2af29;"
               >.</span
             >
@@ -73,23 +73,61 @@
             >
           </p>
           <!-- Source: https://github.com/gcalmettes/reveal.js-d3 -->
-          <!-- height: 100vh; -->
+          <!-- onload="resizeIframe(this)" -->
           <iframe
             data-src="./lib/charts/pie-chart.html"
             style="
               margin: 0px;
               width: 100vw;
+              height: 100vh;
               max-width: 100%;
               max-height: 100%;
               z-index: 1;
               border: 0;
             "
             scrolling="no"
-            onload="resizeIframe(this)"
           ></iframe>
         </section>
+        <section style="text-align: left;">
+          <h2>Agenda</h2>
+          <ol>
+            <li>Framing</li>
+            <li>Vega</li>
+            <li>Examples</li>
+            <li>Feedzai Charting Library KO</li>
+            <li>Next steps?</li>
+          </ol>
+        </section>
+        <section data-markdown style="text-align: left;">
+          <script type="text/template">
+            ## Framing
+
+            Introduce a technology based on my personal experience.
+
+            Data Visualization from a _pragmatic_ perspective for Web Development.
+
+            At the end of this talk, you will be able to describe the Vega ecosystem and identify it as an interesting alternative for your work and personal projects.
+          </script>
+        </section>
+        <section
+          data-background-iframe="https://vega.github.io/vega/"
+          data-background-interactive
+        ></section>
+        <section data-markdown style="text-align: left;">
+          <script type="text/template">
+            ## Vega
+
+            - **Declarative** language for creating charts
+            - The same _language_ for static parts and for interactive parts
+            - Low-level (but not as much as [D3](https://d3js.org/))
+          </script>
+        </section>
+        <section
+          data-background-iframe="https://vega.github.io/vega/about/research/"
+          data-background-interactive
+        ></section>
         <section>
-          <h2>Teste</h2>
+          <h2>Bar chart</h2>
           <div class="container">
             <div class="col">
               teste
@@ -101,13 +139,13 @@
                 style="
                   margin: 0px;
                   width: 100vw;
+                  height: 100vh;
                   max-width: 100%;
                   max-height: 100%;
                   z-index: 1;
                   border: 0;
                 "
                 scrolling="no"
-                onload="resizeIframe(this)"
               ></iframe>
             </div>
           </div>
@@ -123,7 +161,6 @@
             </div>
           </div>
         </section>
-        <section>
       </div>
     </div>
 

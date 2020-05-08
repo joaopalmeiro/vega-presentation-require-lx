@@ -7,10 +7,12 @@
 body {
   @include bodyBackground();
   background-color: $backgroundColor;
-  background-image: url(../../lib/assets/VL_Color.svg);
-  background-size: 36px;
+  background-image: url(../../lib/assets/VL_Color.svg),
+    url(../../lib/assets/Feedzai_Color.svg);
+  background-size: calc(12px * 3), calc(12px * 10);
   background-repeat: no-repeat;
-  background-position: bottom calc(8px + 5px) left calc(8px + 5px);
+  background-position: bottom calc(8px + 5px) left calc(8px + 5px),
+    bottom calc(0px) left calc(8px + 5px + 12px * 3);
 }
 
 .reveal .slide-number {

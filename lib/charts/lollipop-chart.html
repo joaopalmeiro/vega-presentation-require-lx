@@ -1,0 +1,152 @@
+<head>
+  <script src="https://cdn.jsdelivr.net/npm/vega@5.11.1"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-lite@4.12.0"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.7.1"></script>
+</head>
+<body style="margin: 0px; text-align: center;">
+  <div id="vis"></div>
+
+  <script type="text/javascript">
+    var yourVlSpec = {
+      $schema: "https://vega.github.io/schema/vega-lite/v4.json",
+      title: {
+        text: "Top 10 registered first names by gender",
+        subtitle:
+          "Portugal | 2017 | Source: Instituto dos Registos e do Notariado (IRN)",
+      },
+      background: "#fefefa",
+      config: {
+        font: "Roboto",
+        view: { height: 300, width: 300 },
+        title: {
+          font: "Roboto",
+          color: "#44475a",
+          subtitleFont: "Roboto",
+          subtitleColor: "#44475a",
+          offset: 42,
+          fontSize: 42,
+          subtitleFontSize: 21,
+          anchor: "middle",
+        },
+        style: {
+          "guide-label": { fill: "#44475a" },
+          "guide-title": { fill: "#44475a" },
+        },
+        axis: { domainColor: "#44475a", tickColor: "#44475a" },
+        text: { font: "Roboto", fill: "#44475a" },
+      },
+      data: {
+        url:
+          "https://raw.githubusercontent.com/joaopalmeiro/data-preparation/master/vega-presentation-require-lx/data/names.csv",
+        name: "operations",
+      },
+      concat: [
+        {
+          layer: [
+            {
+              mark: { type: "rule", color: "#44475a", size: 1 },
+              encoding: {
+                x: { type: "quantitative", field: "total" },
+                y: {
+                  type: "nominal",
+                  field: "name",
+                },
+              },
+            },
+            {
+              mark: {
+                type: "point",
+                color: "#f2af29",
+                filled: true,
+                opacity: 1,
+                size: 100,
+              },
+              encoding: {
+                x: {
+                  type: "quantitative",
+                  axis: {
+                    domain: false,
+                    format: ".0s",
+                    ticks: false,
+                    title: "Total",
+                  },
+                  field: "total",
+                },
+                y: {
+                  type: "nominal",
+                  axis: { domain: false, ticks: false, title: "Name" },
+                  field: "name",
+                },
+              },
+            },
+            {
+              mark: { type: "rule", color: "#44475a", size: 1 },
+              encoding: { x: { type: "quantitative", field: "a" } },
+            },
+          ],
+          transform: [
+            { filter: "datum.gender == 'F'" },
+            { calculate: "0.0", as: "a" },
+          ],
+        },
+        {
+          layer: [
+            {
+              mark: { type: "rule", color: "#44475a", size: 1 },
+              encoding: {
+                x: { type: "quantitative", field: "total" },
+                y: {
+                  type: "nominal",
+                  field: "name",
+                },
+              },
+            },
+            {
+              mark: {
+                type: "point",
+                filled: true,
+                color: "#f2af29",
+                opacity: 1,
+                size: 100,
+              },
+              encoding: {
+                x: {
+                  type: "quantitative",
+                  axis: {
+                    domain: false,
+                    ticks: false,
+                    title: "Total",
+                  },
+                  field: "total",
+                },
+                y: {
+                  type: "nominal",
+                  axis: { domain: false, ticks: false, title: null },
+                  field: "name",
+                },
+              },
+            },
+            {
+              mark: { type: "rule", color: "#44475a", size: 1 },
+              encoding: { x: { type: "quantitative", field: "a" } },
+            },
+          ],
+          transform: [
+            { filter: "datum.gender == 'M'" },
+            { calculate: "0.0", as: "a" },
+          ],
+        },
+      ],
+    };
+
+    var tooltipOptions = {
+      theme: "dark",
+    };
+
+    vegaEmbed(
+      "#vis",
+      yourVlSpec,
+      (opt = { renderer: "svg", tooltip: tooltipOptions })
+    );
+  </script>
+</body>

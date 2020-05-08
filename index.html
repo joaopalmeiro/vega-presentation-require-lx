@@ -114,18 +114,99 @@
           data-background-interactive
         ></section>
         <section data-markdown style="text-align: left;">
+          <!-- Workaround for the fragments: https://github.com/hakimel/reveal.js/issues/1848 -->
           <script type="text/template">
             ## Vega
 
             - **Declarative** language for creating charts
-            - The same _language_ for static parts and for interactive parts
+            - The <!-- .element: class="fragment" --> same _language_ for static parts and for interactive parts
+            - A <!-- .element: class="fragment" --> Vega chart is **specified** in a JSON format 📃
+            - The <!-- .element: class="fragment" --> **specification** (our focus today) is separate from the **execution**
+            - Based <!-- .element: class="fragment" --> on Leland Wilkinson's _The Grammar of Graphics_ (building blocks for Data Visualization)
+          </script>
+        </section>
+        <section data-markdown style="text-align: left;">
+          <script type="text/template">
+            ## The Grammar of Graphics
+
+            - Data 💾
+            - <!-- .element: class="fragment" --> Transform ⚙️
+            - <!-- .element: class="fragment" --> Mark 📌 (representative elements of the data)
+            - <!-- .element: class="fragment" --> Encoding 🗺️ (mapping between columns and mark properties)
+            - <!-- .element: class="fragment" --> Scale 📏 (functions that map data values to visual values)
+            - <!-- .element: class="fragment" --> Guide 🦮 (scale visualization)
+          </script>
+        </section>
+        <section data-markdown style="text-align: left;">
+          <script type="text/template">
+            ## The Grammar of Graphics
+
+            There are different nomenclatures (and implementations), but what is important is this foundation for the creation of any chart. 📊
+          </script>
+        </section>
+        <section data-markdown style="text-align: left;">
+          <script type="text/template">
+            ## Vega
+
             - Low-level (but not as much as [D3](https://d3js.org/))
+            - Strongly <!-- .element: class="fragment" --> backed up by research
           </script>
         </section>
         <section
           data-background-iframe="https://vega.github.io/vega/about/research/"
           data-background-interactive
         ></section>
+        <section data-markdown style="text-align: left;">
+          <script type="text/template">
+            ## Vega
+
+            - Low-level (but not as much as [D3](https://d3js.org/))
+            - Strongly backed up by research
+            - Constant development
+            - <!-- .element: class="fragment" --> Noteworthy community
+            - Here <!-- .element: class="fragment" --> comes the _punch line_: one of the motivations is to serve as a foundation for higher-level tools! 🚧
+            - <!-- .element: class="fragment" --> And here comes the "ecosystem"
+          </script>
+        </section>
+        <section data-markdown style="text-align: left;">
+          <script type="text/template">
+            ## Vega ecosystem
+
+            - Vega
+            - A <!-- .element: class="fragment" --> high-level language whose graphics are compiled to Vega specifications: **Vega-Lite** (our focus from now on)
+          </script>
+        </section>
+        <section
+          data-background-iframe="https://altair-viz.github.io/"
+          data-background-interactive
+        ></section>
+        <section
+          data-background-iframe="https://package.elm-lang.org/packages/gicentre/elm-vega/latest"
+          data-background-interactive
+        ></section>
+        <section
+          data-background-iframe="https://www.queryverse.org/VegaLite.jl/stable/"
+          data-background-interactive
+        ></section>
+        <section
+          data-background-iframe="https://flourish.studio/2018/05/29/vega-lite-in-flourish/"
+          data-background-interactive
+        ></section>
+        <section
+          data-background-iframe="https://liminoid.io/"
+          data-background-interactive
+        ></section>
+        <section data-markdown style="text-align: left;">
+          <script type="text/template">
+            ## Vega-Lite
+
+            - Declarative language as well
+            - <!-- .element: class="fragment" --> Grammar of interaction (an easy and quick way to specify interaction 🧂)
+            - Achieved  <!-- .element: class="fragment" --> from a _new_ building block: **selections**
+            - View <!-- .element: class="fragment" --> **composition** algebra (an easy and quick way to specify layered and multi-view charts 🧂)
+            - Vega-Lite <!-- .element: class="fragment" -->  is also powerful and things are simpler than in Vega — but there is still a **learning curve**.
+          </script>
+        </section>
         <section>
           <h2>Bar chart</h2>
           <div class="container">

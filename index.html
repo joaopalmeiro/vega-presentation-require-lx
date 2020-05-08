@@ -31,7 +31,7 @@
     <link rel="stylesheet" href="css/theme/custom.css" />
 
     <!-- Theme used for syntax highlighting of code -->
-    <link rel="stylesheet" href="lib/css/monokai.css" />
+    <link rel="stylesheet" href="lib/css/ascetic-mod.css" />
 
     <!-- Printing and PDF exports -->
     <script>
@@ -104,9 +104,9 @@
 
             Introduce a technology based on my personal experience.
 
-            Data Visualization from a _pragmatic_ perspective for Web Development.
+            Data <!-- .element: class="fragment" --> Visualization from a _pragmatic_ perspective for Web Development.
 
-            At the end of this talk, you will be able to describe the Vega ecosystem and identify it as an interesting alternative for your work and personal projects.
+            At <!-- .element: class="fragment" --> the end of this talk, you will be able to describe the Vega ecosystem and identify it as an interesting alternative for your work and personal projects.
           </script>
         </section>
         <section
@@ -202,16 +202,331 @@
 
             - Declarative language as well
             - <!-- .element: class="fragment" --> Grammar of interaction (an easy and quick way to specify interaction 🧂)
-            - Achieved  <!-- .element: class="fragment" --> from a _new_ building block: **selections**
+              - Achieved  <!-- .element: class="fragment" --> from a _new_ building block: **selections**
             - View <!-- .element: class="fragment" --> **composition** algebra (an easy and quick way to specify layered and multi-view charts 🧂)
             - Vega-Lite <!-- .element: class="fragment" -->  is also powerful and things are simpler than in Vega — but there is still a **learning curve**.
           </script>
         </section>
         <section>
+          <h2>Let's see code!</h2>
+          <iframe
+            data-src="./lib/charts/bar-chart.html"
+            style="
+              margin: 0px;
+              width: 100vw;
+              height: 100vh;
+              max-width: 100%;
+              max-height: 100%;
+              z-index: 1;
+              border: 0;
+            "
+            scrolling="no"
+          ></iframe>
+        </section>
+        <section>
           <h2>Bar chart</h2>
           <div class="container">
             <div class="col">
-              teste
+              <pre><code class="hljs" data-trim data-line-numbers="2-5">
+                {
+                  "data": {
+                    "url": ".../operations.csv",
+                    "name": "operations"
+                  }
+                }
+              </code></pre>
+            </div>
+
+            <div class="col">
+              <iframe
+                data-src="./lib/charts/bar-chart-1.html"
+                style="
+                  margin: 0px;
+                  width: 100vw;
+                  height: 100vh;
+                  max-width: 100%;
+                  max-height: 100%;
+                  z-index: 1;
+                  border: 0;
+                "
+                scrolling="no"
+              ></iframe>
+            </div>
+          </div>
+        </section>
+        <section>
+          <h2>Bar chart</h2>
+          <div class="container">
+            <div class="col">
+              <pre><code class="hljs" data-trim data-line-numbers="6-9">
+                {
+                  "data": {
+                    "url": ".../operations.csv",
+                    "name": "operations"
+                  },
+                  "mark": {
+                    "type": "bar", 
+                    "color": "#f2af29"
+                  }
+                }
+              </code></pre>
+            </div>
+
+            <div class="col">
+              <iframe
+                data-src="./lib/charts/bar-chart-2.html"
+                style="
+                  margin: 0px;
+                  width: 100vw;
+                  height: 100vh;
+                  max-width: 100%;
+                  max-height: 100%;
+                  z-index: 1;
+                  border: 0;
+                "
+                scrolling="no"
+              ></iframe>
+            </div>
+          </div>
+        </section>
+        <section>
+          <h2>Bar chart</h2>
+          <div class="container">
+            <div class="col">
+              <pre><code class="hljs" data-trim data-line-numbers="6-15">
+                  ...
+                  "mark": {
+                    "type": "bar", 
+                    "color": "#f2af29"
+                  },
+                  "encoding": {
+                    "x": {
+                      "field": "emoji",
+                      "type": "ordinal",
+                      "axis": {
+                        "title": "Sector", 
+                        "labelAngle": 0
+                      }
+                    }
+                  }
+                }
+              </code></pre>
+            </div>
+
+            <div class="col">
+              <iframe
+                data-src="./lib/charts/bar-chart-3.html"
+                style="
+                  margin: 0px;
+                  width: 100vw;
+                  height: 100vh;
+                  max-width: 100%;
+                  max-height: 100%;
+                  z-index: 1;
+                  border: 0;
+                "
+                scrolling="no"
+              ></iframe>
+            </div>
+          </div>
+        </section>
+        <section>
+          <h2>Bar chart</h2>
+          <div class="container">
+            <div class="col">
+              <pre><code class="hljs" data-trim data-line-numbers="2,11-19">
+                  ...
+                  "encoding": {
+                    "x": {
+                      "field": "emoji",
+                      "type": "ordinal",
+                      "axis": {
+                        "title": "Sector", 
+                        "labelAngle": 0
+                      },
+                    },
+                    "y": {
+                      "field": "amount",
+                      "type": "quantitative",
+                      "axis": {
+                        "title": "Amount (EUR)", 
+                        "format": ".2s"
+                      }
+                    }
+                  }
+                }
+              </code></pre>
+            </div>
+
+            <div class="col">
+              <iframe
+                data-src="./lib/charts/bar-chart-4.html"
+                style="
+                  margin: 0px;
+                  width: 100vw;
+                  height: 100vh;
+                  max-width: 100%;
+                  max-height: 100%;
+                  z-index: 1;
+                  border: 0;
+                "
+                scrolling="no"
+              ></iframe>
+            </div>
+          </div>
+        </section>
+        <section>
+          <h2>Bar chart</h2>
+          <div class="container">
+            <div class="col">
+              <pre><code class="hljs" data-trim data-line-numbers="10-14">
+                  ...
+                  "encoding": {
+                    "x": {
+                      "field": "emoji",
+                      "type": "ordinal",
+                      "axis": {
+                        "title": "Sector", 
+                        "labelAngle": 0
+                      },
+                      "sort": {
+                        "op": "count", 
+                        "field": "amount", 
+                        "order": "ascending"
+                      }
+                    },
+                    ...
+              </code></pre>
+            </div>
+
+            <div class="col">
+              <iframe
+                data-src="./lib/charts/bar-chart-5.html"
+                style="
+                  margin: 0px;
+                  width: 100vw;
+                  height: 100vh;
+                  max-width: 100%;
+                  max-height: 100%;
+                  z-index: 1;
+                  border: 0;
+                "
+                scrolling="no"
+              ></iframe>
+            </div>
+          </div>
+        </section>
+        <section>
+          <h2>Bar chart</h2>
+          <div class="container">
+            <div class="col">
+              <pre><code class="hljs" data-trim data-line-numbers="2-22">
+                  ...
+                  "layer": [
+                    {
+                      "mark": {
+                        "type": "bar", 
+                        "color": "#f2af29"
+                      },
+                    },
+                    {
+                      "mark": {
+                        "type": "text", 
+                        "yOffset": -5
+                      },
+                      "encoding": {
+                        "text": {
+                          "field": "amount", 
+                          "type": "quantitative", 
+                          "format": ".2s"
+                        }
+                      }
+                    }
+                  ]
+                }
+              </code></pre>
+            </div>
+
+            <div class="col">
+              <iframe
+                data-src="./lib/charts/bar-chart-6.html"
+                style="
+                  margin: 0px;
+                  width: 100vw;
+                  height: 100vh;
+                  max-width: 100%;
+                  max-height: 100%;
+                  z-index: 1;
+                  border: 0;
+                "
+                scrolling="no"
+              ></iframe>
+            </div>
+          </div>
+        </section>
+        <section>
+          <h2>Bar chart</h2>
+          <div class="container">
+            <div class="col">
+              <pre><code class="hljs" data-trim data-line-numbers="8-13">
+                  ...
+                  "layer": [
+                    {
+                      "mark": {
+                        "type": "bar", 
+                        "color": "#f2af29"
+                      },
+                      "encoding": {
+                        "tooltip": {
+                          "field": "sector", 
+                          "type": "ordinal"
+                        }
+                      }
+                    ...
+              </code></pre>
+            </div>
+
+            <div class="col">
+              <iframe
+                data-src="./lib/charts/bar-chart-7.html"
+                style="
+                  margin: 0px;
+                  width: 100vw;
+                  height: 100vh;
+                  max-width: 100%;
+                  max-height: 100%;
+                  z-index: 1;
+                  border: 0;
+                "
+                scrolling="no"
+              ></iframe>
+            </div>
+          </div>
+        </section>
+        <section>
+          <h2>Bar chart</h2>
+          <div class="container">
+            <div class="col">
+              <pre><code class="hljs" data-trim data-line-numbers="4-8,11-17">
+                  ...
+                  "layer": [
+                    {
+                      "selection": {
+                        "select": {
+                          "type": "multi"
+                        }
+                      },
+                      ...
+                      "encoding": {
+                        "fillOpacity": {
+                          "condition": {
+                            "selection": "select", 
+                            "value": 1
+                          },
+                          "value": 0.3
+                        },
+                        ...
+              </code></pre>
             </div>
 
             <div class="col">
@@ -232,15 +547,70 @@
           </div>
         </section>
         <section>
-          <div class="container">
-            <div class="col">
-              Column 1 Content
-            </div>
+          <h2>Bar chart ✔️</h2>
+          <iframe
+            data-src="./lib/charts/bar-chart.html"
+            style="
+              margin: 0px;
+              width: 100vw;
+              height: 100vh;
+              max-width: 100%;
+              max-height: 100%;
+              z-index: 1;
+              border: 0;
+            "
+            scrolling="no"
+          ></iframe>
+        </section>
+        <section>
+          <h2>Example 1</h2>
+          <iframe
+            data-src="./lib/charts/bar-chart.html"
+            style="
+              margin: 0px;
+              width: 100vw;
+              height: 100vh;
+              max-width: 100%;
+              max-height: 100%;
+              z-index: 1;
+              border: 0;
+            "
+            scrolling="no"
+          ></iframe>
+        </section>
+        <section>
+          <h2>Example 2</h2>
+          <iframe
+            data-src="./lib/charts/bar-chart.html"
+            style="
+              margin: 0px;
+              width: 100vw;
+              height: 100vh;
+              max-width: 100%;
+              max-height: 100%;
+              z-index: 1;
+              border: 0;
+            "
+            scrolling="no"
+          ></iframe>
+        </section>
+        <section data-markdown style="text-align: left;">
+          <script type="text/template">
+            ## Feedzai Charting Library KO
 
-            <div class="col">
-              Column 2 Content
-            </div>
-          </div>
+            - Engineering intern during Feedzai's 2019 summer internships
+            - <!-- .element: class="fragment" --> Motivation:
+              - <!-- .element: class="fragment" --> No standards for formatting and designing visualizations
+              - <!-- .element: class="fragment" --> Reproducibility
+              - <!-- .element: class="fragment" --> Different libraries are used in Feedzai's products
+          </script>
+        </section>
+        <section data-markdown style="text-align: left;">
+          <script type="text/template">
+            ## Feedzai Charting Library KO
+
+            - here
+          </script>
         </section>
       </div>
     </div>

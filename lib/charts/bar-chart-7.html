@@ -57,25 +57,9 @@
       },
       layer: [
         {
-          selection: {
-            select: { type: "multi" },
-          },
           mark: { type: "bar", color: "#f2af29" },
           encoding: {
-            fillOpacity: {
-              condition: { selection: "select", value: 1 },
-              value: 0.3,
-            },
-            tooltip: { field: "sector", type: "ordinal" },
-            // tooltip: [
-            //   { field: "sector", type: "ordinal", title: "Sector" },
-            //   {
-            //     field: "amount",
-            //     type: "quantitative",
-            //     title: "Amount (EUR)",
-            //     format: ".2s",
-            //   },
-            // ],
+            tooltip: { field: "sector", type: "ordinal", title: "Sector" },
           },
         },
         {
@@ -88,10 +72,6 @@
               field: "amount",
               type: "quantitative",
               format: ".2s",
-            },
-            fillOpacity: {
-              condition: { selection: "select", value: 1 },
-              value: 0.3,
             },
           },
         },

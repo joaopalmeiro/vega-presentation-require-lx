@@ -120,7 +120,7 @@
 
             - **Declarative** language for creating charts
             - The <!-- .element: class="fragment" --> same _language_ for static parts and for interactive parts
-            - A <!-- .element: class="fragment" --> Vega chart is **specified** in a JSON format 📃
+            - A <!-- .element: class="fragment" --> Vega chart is **specified** in a JSON format 📝
             - The <!-- .element: class="fragment" --> **specification** (our focus today) is separate from the **execution**
             - Based <!-- .element: class="fragment" --> on Leland Wilkinson's _The Grammar of Graphics_ (building blocks for Data Visualization)
           </script>
@@ -696,12 +696,25 @@
             - There are 3 things on the Vega and Vega-Lite roadmap that we would like to see completed:
               - <!-- .element: class="fragment" --> Animations
               - <!-- .element: class="fragment" --> Improved React support
-              - (<!-- .element: class="fragment" -->_Smart_) labeling
+              - (<!-- .element: class="fragment" -->_Smart_) labeling ([Vega-Label](https://github.com/vega/vega-label))
           </script>
         </section>
         <section data-markdown style="text-align: left;">
           <script type="text/template">
             ## Next steps?
+
+            - h
+          </script>
+        </section>
+        <section data-markdown data-background="#fefefa">
+          <script type="text/template">
+            # Thanks! 😄
+
+            [Slide deck](https://github.com/joaopalmeiro/vega-presentation-require-lx)
+
+            - Vega and Vega-Lite are two powerful alternatives for Data Visualization 📊
+            - Charts are declared using a JSON specification 📝
+            - It is possible to combine them with React ⚛️
           </script>
         </section>
       </div>
@@ -718,7 +731,9 @@
         controls: false,
         preloadIframes: true,
         slideNumber: function (slide) {
-          return !Reveal.isFirstSlide() ? [Reveal.getIndices(slide).h] : [""];
+          return !Reveal.isFirstSlide() && !Reveal.isLastSlide()
+            ? [Reveal.getIndices(slide).h]
+            : [""];
         },
         dependencies: [
           { src: "plugin/markdown/marked.js" },

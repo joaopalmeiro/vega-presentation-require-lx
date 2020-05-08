@@ -420,7 +420,7 @@
           <h2>Bar chart</h2>
           <div class="container">
             <div class="col">
-              <pre><code class="hljs" data-trim data-line-numbers="2-22">
+              <pre><code class="hljs" data-trim data-line-numbers="2-19">
                   ...
                   "layer": [
                     {
@@ -440,10 +440,7 @@
                           "type": "quantitative", 
                           "format": ".2s"
                         }
-                      }
-                    }
-                  ]
-                }
+                      ...
               </code></pre>
             </div>
 
@@ -599,7 +596,7 @@
             ## Feedzai Charting Library KO
 
             - Engineering intern during Feedzai's 2019 summer internships
-            - <!-- .element: class="fragment" --> Motivation:
+            - **Motivation**:
               - <!-- .element: class="fragment" --> No standards for formatting and designing visualizations
               - <!-- .element: class="fragment" --> Reproducibility
               - <!-- .element: class="fragment" --> Different libraries are used in Feedzai's products
@@ -609,7 +606,102 @@
           <script type="text/template">
             ## Feedzai Charting Library KO
 
-            - here
+            - **Approach**:
+              - <!-- .element: class="fragment" --> Expand the React UI Component library used across Feedzai products
+              - Combine <!-- .element: class="fragment" --> React and Vega (there are practically no examples and [react-vega](https://github.com/vega/react-vega) offers no advantages)
+              - Instead <!-- .element: class="fragment" --> of several charts, create an _end-to-end_ Histogram component and test its integration
+          </script>
+        </section>
+        <section data-markdown style="text-align: left;">
+          <script type="text/template">
+            ## Feedzai Charting Library KO
+
+            - **Histogram**:
+              - <!-- .element: class="fragment" --> Basic histogram for a single distribution
+              - <!-- .element: class="fragment" --> Overlaid/Overlapping histogram for two distributions
+              - <!-- .element: class="fragment" --> Legend with customizable labels
+              - <!-- .element: class="fragment" --> Vertical axis with a linear or logarithmic scale (semi-log plot)
+              - <!-- .element: class="fragment" --> Tooltip to show some details associated with each of the bars
+          </script>
+        </section>
+        <section data-markdown style="text-align: left;">
+          <script type="text/template">
+            ## Feedzai Charting Library KO
+
+            - **Histogram**:
+              - <!-- .element: class="fragment" --> In the case of the overlaid histogram, an interactive legend that allows viewing only one of two available distributions
+              - <!-- .element: class="fragment" --> A dynamic number of labels depending on the number of bins
+              - <!-- .element: class="fragment" --> Button with action links to save the chart in two different image formats
+              - <!-- .element: class="fragment" --> A threshold marker to specify a reference value
+          </script>
+        </section>
+        <section data-markdown style="text-align: left;">
+          <script type="text/template">
+            ## Feedzai Charting Library KO
+
+            - **Tech stack** (plus React and Vega):
+              - [Vega-Embed](https://github.com/vega/vega-embed)
+              - [Jest](https://jestjs.io/)
+              - [Enzyme](https://enzymejs.github.io/enzyme/)
+              - [Lodash](https://lodash.com/)
+              - [Storybook](https://storybook.js.org/)
+          </script>
+        </section>
+        <section data-markdown style="text-align: left;">
+          <script type="text/template">
+            ## Feedzai Charting Library KO
+
+            - Typical folder structure, but with a new folder for JSON specifications
+            - <!-- .element: class="fragment" --> One of the responsibilities of the Histogram component is to adapt and customize the Vega specification
+            - <!-- .element: class="fragment" --> Refs to facilitate the identification of the container in which the histogram is embedded
+          </script>
+        </section>
+        <section>
+          <h2>Lifecycle Methods Wrapping</h2>
+          <pre><code class="hljs" data-trim data-line-numbers>
+            class Histogram extends React.Component {
+              constructor(props) {
+                  super(props);
+                  this.histogramRef = React.createRef();
+              }
+
+              componentDidMount() {
+                  this._createView();
+              }
+              componentDidUpdate() {
+                  this._updateView();
+              }
+              componentWillUnmount() {
+                  this._clearView();
+              }
+          
+              render() {
+                  return &lt;div ref={this.histogramRef} /&gt;;
+              }
+            }
+					</code></pre>
+        </section>
+        <section data-markdown style="text-align: left;">
+          <script type="text/template">
+            ## Feedzai Charting Library KO
+
+            - The Histogram component receives processed data ready to be visualized
+            - Vega <!-- .element: class="fragment" --> has a well-defined data model which uses _tabular_ data ⚠️
+          </script>
+        </section>
+        <section data-markdown style="text-align: left;">
+          <script type="text/template">
+            ## Feedzai Charting Library KO
+
+            - There are 3 things on the Vega and Vega-Lite roadmap that we would like to see completed:
+              - <!-- .element: class="fragment" --> Animations
+              - <!-- .element: class="fragment" --> Improved React support
+              - (<!-- .element: class="fragment" -->_Smart_) labeling
+          </script>
+        </section>
+        <section data-markdown style="text-align: left;">
+          <script type="text/template">
+            ## Next steps?
           </script>
         </section>
       </div>

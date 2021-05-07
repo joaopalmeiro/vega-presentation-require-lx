@@ -1,6 +1,7 @@
 # Plotting the first point w/ the Vega ecosystem.
 
 📍 require('lx') (Lisbon)
+
 📅 Friday, May 8, 2020
 
 ## Links
